@@ -2,7 +2,7 @@ import React from "react";
 import Item from "./Item";
 
 class Items extends React.Component {
-    state = {activeIndex: 0};
+    state = {activeIndex: -1};
 
     onTitleClick = (index) => {
         if (index === this.state.activeIndex)
