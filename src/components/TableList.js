@@ -1,11 +1,70 @@
-import {Button, Icon, Segment} from "semantic-ui-react";
-import FullCalendar from "@fullcalendar/react";
-import timeGridPlugin from "@fullcalendar/timegrid";
+import {Button, Icon} from "semantic-ui-react";
 import React from "react";
 import {Link} from "react-router-dom";
+import Calendar from "./Calendar";
 
 class TableList extends React.Component {
+
+    convertTo24 = (time) => {
+        const digits = time.trim().match(/(\d+):/m);
+        let hours = parseInt(digits[1]);
+        if (hours === 12) {
+            hours = 0;
+        }
+
+        if (time.match(/PM/gi)) {
+            hours += 12;
+        }
+
+        if (hours < 10)
+            hours = `0${hours.toString()}`
+
+        return time.replace(digits[1].toString(), hours.toString()).replace(/AM/i, "").replace(/PM/i, "");
+    }
+
+    getDayIndex = (day) => {
+        switch (day.toLowerCase()) {
+            case 'su':
+                return 0;
+            case 'mo':
+                return 1;
+            case 'tu':
+                return 2;
+            case 'we':
+                return 3;
+            case 'th':
+                return 4;
+            default:
+                return;
+        }
+    }
+
+    renderTables = () => {
+        return this.groups.map(({title, classes}, index) => {
+            let events = [];
+            classes.map(c => {
+                c.daysAndTimes.map(dt => {
+                    const [days, start, , end] = dt.split(' ');
+                    days.match(/[A-Z][a-z]/g).map(day => {
+                        events.push({
+                            allDay: false,
+                            title: c.courseTitle,
+                            daysOfWeek: [`${this.getDayIndex(day)}`],
+                            startTime: `${this.convertTo24(start)}:00`,
+                            endTime: `${this.convertTo24(end)}:00`,
+                        })
+                    })
+                })
+            })
+            return <Calendar key={index} title={title} events={events}/>
+        })
+    }
+
     render() {
+        if (!this.props.location.state)
+            return <div>No groups found! <Link to="/">Try again...</Link></div>;
+
+        this.groups = this.props.location.state.groups;
         return (
             <React.Fragment>
                 <Link to="/">
@@ -13,20 +72,7 @@ class TableList extends React.Component {
                         <Button.Content><Icon name='arrow left'/></Button.Content>
                     </Button>
                 </Link>
-                <Segment>
-                    <h2>Group 1</h2>
-                    <FullCalendar plugins={[timeGridPlugin]}
-                                  initialView="timeGridWeek"
-                                  allDaySlot={false}
-                                  slotMinTime={"08:00:00"}
-                                  slotMaxTime={"17:00:00"}
-                                  dayHeaderFormat={{weekday: 'short'}}
-                                  slotLabelFormat={{hour: '2-digit', minute: '2-digit', hour12: true}}
-                                  expandRows
-                                  hiddenDays={[5, 6]}
-                                  headerToolbar={false}
-                    />
-                </Segment>
+                {this.renderTables()}
             </React.Fragment>
         );
     }

@@ -10,13 +10,19 @@ const Container = styled.div`
 `
 const Class = (props) => {
     const renderData = () => {
-        return Object.entries(props.data).map(([key, value], index) => {
-            if (key !== "id")
-                return <div key={index} className="center aligned column">{value}</div>
-        })
+        return (props.inCourseContainer ?
+            <>
+                <div className="center aligned column">{props.data["title"]}</div>
+                <div className="center aligned column">{props.data["daysAndTimes"]}</div>
+            </> :
+            <>
+                <div className="center aligned column">{props.data["courseTitle"]}</div>
+                <div className="center aligned column">{props.data["title"]}</div>
+                <div className="center aligned column">{props.data["daysAndTimes"]}</div>
+            </>);
     }
     return (
-        <Draggable draggableId={`${props.index}`} index={props.index} key={props.index} >
+        <Draggable draggableId={`${props.id}`} index={props.id} key={props.id}>
             {(provided, snapshot) => (
                 <Container className="ui equal width grid"
                            ref={provided.innerRef}

@@ -2,147 +2,177 @@ import React from "react";
 import {Accordion, Button, Grid, Icon} from "semantic-ui-react";
 import {DragDropContext} from "react-beautiful-dnd";
 import Items from "./Items";
-import data from "../data";
 import Group from "../classes/Group";
-import Course from "../classes/Course";
-import Class from "../classes/Class";
 import _ from 'lodash';
 import {Link} from "react-router-dom";
-
+import {dndUtil} from "../Utils/dndUtil";
+import {CoursesProvider} from "../classes/CoursesProvider";
 
 class CreateGroup extends React.Component {
-    state = {courses: data, groups: [new Group("Group 1", [])]};
-    // state = {courses: null, groups: [new Group("Group 1", [])]};
-    rawData = null;
-    awaitDom = () => {
-        window.chrome.runtime.onMessage.addListener((msg, sender, response) => {
-            if (msg.from === "background.js" && msg.to === "builder" && msg.subject === "append-dom") {
-                this.rawData = new DOMParser().parseFromString(msg.content, "text/html");
-            }
-        });
-    }
+    courses = [];
+    classes = [];
+    groups = [new Group(1, "Group 1", [])];
 
-    mapDomToObjects = (dom) => {
-        const coursesDom = dom.querySelectorAll("[id^='win5divSSR_CLSRSLT_WRK_GROUPBOX2$']");
-        let id = -1;
-        const courses = Array.from(coursesDom).map(courseDom => {
-            const courseName = courseDom.querySelector("div[id^='win5divSSR_CLSRSLT_WRK_GROUPBOX2GP$']")
-                .innerText
-                .trim()
-                .replace("  ", " ");
-            let course = new Course(courseName, []);
-            const classesDom = courseDom.querySelectorAll("[id^='trSSR_CLSRCH_MTG1$']");
-            course.classes = Array.from(classesDom).map(classDom => {
-                const section = classDom.children[1].innerText.trim().replace(/[\n]/, " ");
-                const daysAndTimes = classDom.children[2].innerText.trim().split(/[\n]/);
-                id += 1;
-                return new Class(id, section, daysAndTimes);
-            })
-            return course;
-        });
-        console.log(courses);
-        this.setState({courses: courses})
-    }
+    state = {uuid: 1};
 
     componentDidMount() {
-        // this.awaitDom();
-        // setTimeout(() => {
-        //     this.mapDomToObjects(this.rawData);
-        // }, 500);
+        CoursesProvider.getCourses(true, (courses) => {
+            this.handleCourses(courses);
+        })
     }
 
-    isValidMove = (draggableId, sourceDroppableId, destinationDroppableId) => {
-        const sourceGroup = this.state.groups.filter(group => group.title === sourceDroppableId)[0];
-        const draggedClass = sourceGroup.classes.filter(dClass => dClass.id.toString() === draggableId)[0];
-        return draggedClass.courseTitle === destinationDroppableId;
+    //region handleCourses
+    handleCourses(courses) {
+        this.courses = courses;
+        this.classes = this.getClassesFromCourses(courses);
+        this.classes.forEach(c => {
+            c.courseTitle = this.getCourseById(c.courseId).title;
+        })
+        this.rerender();
     }
 
-    onDragEnd = (result) => {
-        const {destination, source, draggableId} = result;
+    getClassesFromCourses(courses) {
+        return courses.map(course => course.classes).flat();
+    }
 
-        if (!destination)
+    //endregion
+
+    onDragEnd = ({destination, source, draggableId}) => {
+        if (dndUtil.isDroppedOutOfContext(destination))
             return;
 
-        if (destination.droppableId === source.droppableId && destination.index === source.index)
+        if (dndUtil.isDroppedInSamePlace(destination.droppableId, source.droppableId))
             return;
 
-        // if user is trying to drag from a course column to a group column
-        if (source.droppableId.includes(" - ") && destination.droppableId.includes("Group")) {
-            let sourceCourse = this.state.courses.filter(course => course.title === source.droppableId)[0];
-            const draggedClass = sourceCourse.classes.filter(c => c.id.toString() === draggableId)[0];
-            // Remove dragged class from its course
-            sourceCourse.classes = sourceCourse.classes.filter(c => c.id.toString() !== draggableId);
-            // Create new courses object containing sourceCourse after removing its dragged class
-            const newCourses = this.state.courses.map(course => course.title === sourceCourse.title ? sourceCourse : course);
 
-            const destinationGroup = this.state.groups.filter(group => group.title === destination.droppableId)[0];
-            destinationGroup.classes = [...destinationGroup.classes, {courseTitle: source.droppableId, ...draggedClass}];
-            const newGroups = this.state.groups.map(group => group.title === destinationGroup.title ? destinationGroup : group);
-
-            this.setState({...this.state, courses: newCourses, groups: newGroups});
+        const classId = draggableId;
+        if (this.isClassDraggedFromCourseToGroup(source.droppableId, destination.droppableId)) {
+            let groupId = destination.droppableId;
+            this.removeClassFromCourse(classId);
+            this.addClassToGroup(classId, groupId);
+            this.rerender()
         }
 
-        // if user is trying to drag from a group column to a course column
-        if (source.droppableId.includes("Group") && destination.droppableId.includes(" - ")) {
-            if (this.isValidMove(draggableId, source.droppableId, destination.droppableId)) {
-                let sourceGroup = this.state.groups.filter(group => group.title === source.droppableId)[0];
-                const draggedClass = sourceGroup.classes.filter(dClass => dClass.id.toString() === draggableId)[0];
-                // Remove dragged class from its group
-                sourceGroup.classes = sourceGroup.classes.filter(c => c.id.toString() !== draggableId);
-                // Create new groups object containing sourceGroup after removing its dragged class
-                const newGroups = this.state.groups.map(group => group.title === sourceGroup.title ? sourceGroup : group);
-
-                const destinationCourse = this.state.courses.filter(course => course.title === destination.droppableId)[0];
-                destinationCourse.classes = [...destinationCourse.classes, {..._.omit(draggedClass, 'courseTitle')}]
-                const newCourses = this.state.courses.map(course => course.title === destinationCourse.title ? destinationCourse : course);
-
-                this.setState({...this.state, courses: newCourses, groups: newGroups});
+        if (this.isClassDraggedFromGroupToCourse(source.droppableId, destination.droppableId)) {
+            const courseId = destination.droppableId;
+            if (this.canDropClassIntoCourse(classId, courseId)) {
+                const groupId = source.droppableId;
+                this.removeClassFromGroup(classId, groupId);
+                this.addClassToCourse(classId, courseId);
+                this.rerender()
             }
         }
 
+        if (this.isClassDraggedFromGroupToGroup(source.droppableId, destination.droppableId)) {
+            let groupId_from = source.droppableId
+            let groupId_to = destination.droppableId
+            this.removeClassFromGroup(classId, groupId_from);
+            this.addClassToGroup(classId, groupId_to);
+            this.rerender()
+        }
+
+    }
+    isClassDraggedFromCourseToGroup = (sourceId, destinationId) => {
+        return sourceId.includes(" - ") && destinationId.includes("Group");
+    }
+    isClassDraggedFromGroupToCourse = (sourceId, destinationId) => {
+        return sourceId.includes("Group") && destinationId.includes(" - ");
+    }
+    isClassDraggedFromGroupToGroup = (sourceId, destinationId) => {
+        return sourceId.includes("Group") && destinationId.includes("Group");
+    }
+    canDropClassIntoCourse = (classId, courseId) => {
+        const _class = this.getClassById(classId);
+        return courseId.includes(_class.courseId);
     }
 
+    rerender() {
+        let newUUID = this.state.uuid + 1;
+        this.setState({uuid: newUUID})
+    }
+
+    //region courses
+    getCourseById = (courseId) => {
+        return this.courses.filter(course => course.id === courseId)[0];
+    }
+    getCourseByTitle = (title) => {
+        return this.courses.filter(course => course.title === title)[0];
+    }
+    //endregion
+
+    //region classes
+    removeClassFromCourse = (classId) => {
+        let _class = this.getClassById(classId);
+        let course = this.getCourseById(_class.courseId);
+        course.classes = course.classes.filter(c => c.id !== parseInt(classId));
+    }
+    removeClassFromGroup = (classId, groupId) => {
+        let group = this.getGroupByTitle(groupId);
+        group.classes = group.classes.filter(c => c.id !== parseInt(classId));
+    }
+    addClassToGroup = (classId, groupId) => {
+        let _class = this.getClassById(classId);
+        let group = this.getGroupByTitle(groupId);
+        group.classes.push(_class);
+    }
+    getClassById = (classId) => {
+        return this.classes.filter(c => c.id === parseInt(classId))[0]
+    }
+    addClassToCourse = (classId, courseId) => {
+        const _class = this.getClassById(classId);
+        const course = this.getCourseByTitle(courseId);
+        course.classes.push(_class);
+        course.classes = _.sortBy(course.classes, ['id']);
+    }
+    //endregion
+
+    // region groups
     addGroup = () => {
-        const groupCount = this.state.groups.length;
-        const newGroups = [...this.state.groups, new Group(`Group ${groupCount + 1}`, [])]
-        const newState = {...this.state, groups: newGroups}
-        this.setState(newState);
+        const groupCount = this.groups.length;
+        this.groups.push(new Group(groupCount, `Group ${groupCount + 1}`, []))
     }
 
-    renderLandingPage = () => {
-        if (!this.state.courses)
-            return <div className="ui active text loader">Loading...</div>
-        return (
-            <React.Fragment>
-                <DragDropContext onDragEnd={this.onDragEnd} onDragStart={this.onDragStart}>
-                    <Grid.Column>
-                        <Accordion styled>
-                            <Items items={this.state.courses} allowedDestination={this.state.allowedDestination}/>
-                        </Accordion>
-                    </Grid.Column>
-                    <Grid.Column>
-                        <Accordion styled>
-                            <Items items={this.state.groups} allowedDestination={this.state.allowedDestination}/>
-                        </Accordion>
-                        <div style={{marginTop: '8px'}}>
-                            <Button icon="plus" color="violet" fluid onClick={this.addGroup}/>
-                        </div>
-                        <Link to="/tables">
-                            <Button animated primary>
-                                <Button.Content visible>Build</Button.Content>
-                                <Button.Content hidden><Icon name='wrench'/></Button.Content>
-                            </Button>
-                        </Link>
-                    </Grid.Column>
-                </DragDropContext>
-            </React.Fragment>
-        )
+    getGroupById = (groupId) => {
+        return this.groups.filter(group => group.id === groupId)[0];
     }
+
+    getGroupByTitle = (title) => {
+        return this.groups.filter(group => group.title === title)[0];
+    }
+
+    // endregion
 
     render() {
         return (
             <Grid columns={2}>
-                {this.renderLandingPage()}
+                {this.courses.length === 0 ?
+                    <div className="ui active text loader">Loading...</div>
+                    :
+                    <DragDropContext onDragEnd={this.onDragEnd}>
+                        <Grid.Column>
+                            <Accordion styled>
+                                <Items isCourseContainer items={this.courses}/>
+                            </Accordion>
+                        </Grid.Column>
+                        <Grid.Column>
+                            <Accordion styled>
+                                <Items isCourseContainer={false} items={this.groups}/>
+                            </Accordion>
+                            <div style={{marginTop: '8px'}}>
+                                <Button icon="plus" color="violet" fluid onClick={() => {
+                                    this.addGroup()
+                                    this.rerender()
+                                }}/>
+                            </div>
+                            <Link to={{pathname: "/tables", state: {groups: this.groups}}}>
+                                <Button animated primary>
+                                    <Button.Content visible>Build</Button.Content>
+                                    <Button.Content hidden><Icon name="wrench"/></Button.Content>
+                                </Button>
+                            </Link>
+                        </Grid.Column>
+                    </DragDropContext>
+                }
             </Grid>
         );
     }

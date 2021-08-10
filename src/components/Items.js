@@ -17,6 +17,7 @@ class Items extends React.Component {
                 const active = index === this.state.activeIndex;
                 // if (index === 0)
                 return <Item key={index}
+                             inCourseContainer={this.props.isCourseContainer}
                              title={title}
                              classes={classes}
                              isActive={active}

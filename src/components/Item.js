@@ -6,51 +6,45 @@ import {Accordion} from "semantic-ui-react";
 
 const ClassesContainer = styled.div`
   transition: background-color 0.2s ease;
-  background: ${props => (props.isDraggingOver ? 'skyblue' : 'white')};
   padding-left: 1em !important;
   padding-right: 1em !important;
   flex-grow: 1;
 `
 
+const ItemContainer = styled.div`
+  background: ${props => (props.isDraggingOver ? 'skyblue' : 'white')};
+`
+
 class Item extends React.Component {
     itemCount = 0;
     renderClasses = () => {
-        // console.log(this.props)
-        // console.log(!this.props.title.includes("Group"));
         return this.props.classes.map((c, index) => {
             this.itemCount += 1;
-            return <Class index={c.id} key={index} data={c}/>
+            return <Class id={c.id} key={index} data={c} inCourseContainer={this.props.inCourseContainer}/>
         })
-    }
-
-    isDropDisabled = () => {
-
-
     }
 
     render() {
         return (
-            <React.Fragment>
-                <Accordion.Title onClick={this.props.onClick} active={this.props.isActive}>
-                    <i className="dropdown icon"/>
-                    {this.props.title}
-                </Accordion.Title>
-                <Accordion.Content active={this.props.isActive}>
-                    <Droppable
-                        droppableId={this.props.title}>
-                        {(provided, snapshot) => {
-                            return (
-                                <ClassesContainer ref={provided.innerRef}
-                                                  {...provided.droppableProps}
-                                                  isDraggingOver={snapshot.isDraggingOver}>
+            <Droppable droppableId={this.props.title}>
+                {(provided, snapshot) => {
+                    return (
+                        <ItemContainer ref={provided.innerRef} {...provided.droppableProps}
+                                       isDraggingOver={snapshot.isDraggingOver}>
+                            <Accordion.Title onClick={this.props.onClick} active={this.props.isActive}>
+                                <i className="dropdown icon"/>
+                                {this.props.title}
+                            </Accordion.Title>
+                            <Accordion.Content active={this.props.isActive}>
+                                <ClassesContainer>
                                     {this.renderClasses()}
                                     {provided.placeholder}
                                 </ClassesContainer>
-                            )
-                        }}
-                    </Droppable>
-                </Accordion.Content>
-            </React.Fragment>
+                            </Accordion.Content>
+                        </ItemContainer>
+                    )
+                }}
+            </Droppable>
         )
     }
 }
