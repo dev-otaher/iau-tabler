@@ -1,11 +1,11 @@
 import Course from "./Course";
 import Class from "./Class";
-import {mockCourses} from "../MockCourses";
+import {getMockCourses} from "../MockCourses";
 
 export class CoursesProvider {
     static getCourses(mockData, callback) {
         if (mockData) {
-            callback(mockCourses);
+            callback(getMockCourses());
         } else {
             this.grabCoursesFromDom(callback)
         }

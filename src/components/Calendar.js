@@ -15,7 +15,6 @@ const Calendar = (props) => {
                           dayHeaderFormat={{weekday: 'short'}}
                           slotLabelFormat={{hour: '2-digit', minute: '2-digit', hour12: true}}
                           expandRows
-                          // hiddenDays={[5, 6]}
                           headerToolbar={false}
                           events={props.events}
             />

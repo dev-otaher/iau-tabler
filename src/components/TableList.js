@@ -34,13 +34,17 @@ class TableList extends React.Component {
                 return 3;
             case 'th':
                 return 4;
+            case 'fr':
+                return 5;
+            case 'sa':
+                return 6;
             default:
                 return;
         }
     }
 
     renderTables = () => {
-        return this.groups.map(({title, classes}, index) => {
+        return this.props.groups.map(({title, classes}, index) => {
             let events = [];
             classes.map(c => {
                 c.daysAndTimes.map(dt => {
@@ -61,10 +65,9 @@ class TableList extends React.Component {
     }
 
     render() {
-        if (!this.props.location.state)
+        if (!this.props.groups)
             return <div>No groups found! <Link to="/">Try again...</Link></div>;
 
-        this.groups = this.props.location.state.groups;
         return (
             <React.Fragment>
                 <Link to="/">

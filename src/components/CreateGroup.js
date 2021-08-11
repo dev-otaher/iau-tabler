@@ -6,36 +6,9 @@ import Group from "../classes/Group";
 import _ from 'lodash';
 import {Link} from "react-router-dom";
 import {dndUtil} from "../Utils/dndUtil";
-import {CoursesProvider} from "../classes/CoursesProvider";
 
 class CreateGroup extends React.Component {
-    courses = [];
-    classes = [];
-    groups = [new Group(1, "Group 1", [])];
-
     state = {uuid: 1};
-
-    componentDidMount() {
-        CoursesProvider.getCourses(true, (courses) => {
-            this.handleCourses(courses);
-        })
-    }
-
-    //region handleCourses
-    handleCourses(courses) {
-        this.courses = courses;
-        this.classes = this.getClassesFromCourses(courses);
-        this.classes.forEach(c => {
-            c.courseTitle = this.getCourseById(c.courseId).title;
-        })
-        this.rerender();
-    }
-
-    getClassesFromCourses(courses) {
-        return courses.map(course => course.classes).flat();
-    }
-
-    //endregion
 
     onDragEnd = ({destination, source, draggableId}) => {
         if (dndUtil.isDroppedOutOfContext(destination))
@@ -43,7 +16,6 @@ class CreateGroup extends React.Component {
 
         if (dndUtil.isDroppedInSamePlace(destination.droppableId, source.droppableId))
             return;
-
 
         const classId = draggableId;
         if (this.isClassDraggedFromCourseToGroup(source.droppableId, destination.droppableId)) {
@@ -70,17 +42,20 @@ class CreateGroup extends React.Component {
             this.addClassToGroup(classId, groupId_to);
             this.rerender()
         }
-
     }
+
     isClassDraggedFromCourseToGroup = (sourceId, destinationId) => {
         return sourceId.includes(" - ") && destinationId.includes("Group");
     }
+
     isClassDraggedFromGroupToCourse = (sourceId, destinationId) => {
         return sourceId.includes("Group") && destinationId.includes(" - ");
     }
+
     isClassDraggedFromGroupToGroup = (sourceId, destinationId) => {
         return sourceId.includes("Group") && destinationId.includes("Group");
     }
+
     canDropClassIntoCourse = (classId, courseId) => {
         const _class = this.getClassById(classId);
         return courseId.includes(_class.courseId);
@@ -93,10 +68,11 @@ class CreateGroup extends React.Component {
 
     //region courses
     getCourseById = (courseId) => {
-        return this.courses.filter(course => course.id === courseId)[0];
+        return this.props.courses.filter(course => course.id === courseId)[0];
     }
+
     getCourseByTitle = (title) => {
-        return this.courses.filter(course => course.title === title)[0];
+        return this.props.courses.filter(course => course.title === title)[0];
     }
     //endregion
 
@@ -106,18 +82,22 @@ class CreateGroup extends React.Component {
         let course = this.getCourseById(_class.courseId);
         course.classes = course.classes.filter(c => c.id !== parseInt(classId));
     }
+
     removeClassFromGroup = (classId, groupId) => {
         let group = this.getGroupByTitle(groupId);
         group.classes = group.classes.filter(c => c.id !== parseInt(classId));
     }
+
     addClassToGroup = (classId, groupId) => {
         let _class = this.getClassById(classId);
         let group = this.getGroupByTitle(groupId);
         group.classes.push(_class);
     }
+
     getClassById = (classId) => {
-        return this.classes.filter(c => c.id === parseInt(classId))[0]
+        return this.props.classes.filter(c => c.id === parseInt(classId))[0]
     }
+
     addClassToCourse = (classId, courseId) => {
         const _class = this.getClassById(classId);
         const course = this.getCourseByTitle(courseId);
@@ -128,16 +108,16 @@ class CreateGroup extends React.Component {
 
     // region groups
     addGroup = () => {
-        const groupCount = this.groups.length;
-        this.groups.push(new Group(groupCount, `Group ${groupCount + 1}`, []))
+        const groupCount = this.props.groups.length;
+        this.props.groups.push(new Group(groupCount, `Group ${groupCount + 1}`, []))
     }
 
     getGroupById = (groupId) => {
-        return this.groups.filter(group => group.id === groupId)[0];
+        return this.props.groups.filter(group => group.id === groupId)[0];
     }
 
     getGroupByTitle = (title) => {
-        return this.groups.filter(group => group.title === title)[0];
+        return this.props.groups.filter(group => group.title === title)[0];
     }
 
     // endregion
@@ -145,18 +125,18 @@ class CreateGroup extends React.Component {
     render() {
         return (
             <Grid columns={2}>
-                {this.courses.length === 0 ?
+                {this.props.courses.length === 0 ?
                     <div className="ui active text loader">Loading...</div>
                     :
                     <DragDropContext onDragEnd={this.onDragEnd}>
                         <Grid.Column>
-                            <Accordion styled>
-                                <Items isCourseContainer items={this.courses}/>
+                            <Accordion exclusive={false} styled>
+                                <Items isCourseContainer items={this.props.courses}/>
                             </Accordion>
                         </Grid.Column>
                         <Grid.Column>
                             <Accordion styled>
-                                <Items isCourseContainer={false} items={this.groups}/>
+                                <Items isCourseContainer={false} items={this.props.groups}/>
                             </Accordion>
                             <div style={{marginTop: '8px'}}>
                                 <Button icon="plus" color="violet" fluid onClick={() => {
@@ -164,7 +144,7 @@ class CreateGroup extends React.Component {
                                     this.rerender()
                                 }}/>
                             </div>
-                            <Link to={{pathname: "/tables", state: {groups: this.groups}}}>
+                            <Link to="/tables">
                                 <Button animated primary>
                                     <Button.Content visible>Build</Button.Content>
                                     <Button.Content hidden><Icon name="wrench"/></Button.Content>
@@ -176,6 +156,7 @@ class CreateGroup extends React.Component {
             </Grid>
         );
     }
+
 }
 
 export default CreateGroup;

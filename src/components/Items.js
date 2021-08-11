@@ -15,7 +15,6 @@ class Items extends React.Component {
         return (
             this.props.items.map(({title, classes}, index) => {
                 const active = index === this.state.activeIndex;
-                // if (index === 0)
                 return <Item key={index}
                              inCourseContainer={this.props.isCourseContainer}
                              title={title}

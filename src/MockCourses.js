@@ -1,4 +1,4 @@
-export const mockCourses = [
+export const getMockCourses = () => [
     {
         "id": "CIS 321",
         "title": "CIS 321 - Database Concepts and Design",
@@ -644,4 +644,4 @@ export const mockCourses = [
             }
         ]
     }
-];
+]
