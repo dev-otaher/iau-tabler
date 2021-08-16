@@ -20,7 +20,6 @@ class Items extends React.Component {
                              title={title}
                              classes={classes}
                              isActive={active}
-                             allowedDestination={this.props.allowedDestination}
                              onClick={() => {
                                  this.onTitleClick(index)
                              }}/>

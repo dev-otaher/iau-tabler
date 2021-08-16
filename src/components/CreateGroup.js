@@ -5,7 +5,7 @@ import Items from "./Items";
 import Group from "../classes/Group";
 import _ from 'lodash';
 import {Link} from "react-router-dom";
-import {dndUtil} from "../Utils/dndUtil";
+import {dndUtil} from "../utils/dndUtil";
 
 class CreateGroup extends React.Component {
     state = {uuid: 1};
@@ -144,12 +144,14 @@ class CreateGroup extends React.Component {
                                     this.rerender()
                                 }}/>
                             </div>
-                            <Link to="/tables">
-                                <Button animated primary>
-                                    <Button.Content visible>Build</Button.Content>
-                                    <Button.Content hidden><Icon name="wrench"/></Button.Content>
-                                </Button>
-                            </Link>
+                            <div style={{marginTop: '8px'}}>
+                                <Link to="/tables">
+                                    <Button animated={"vertical"} primary fluid>
+                                        <Button.Content visible>Build</Button.Content>
+                                        <Button.Content hidden><Icon name="wrench"/></Button.Content>
+                                    </Button>
+                                </Link>
+                            </div>
                         </Grid.Column>
                     </DragDropContext>
                 }

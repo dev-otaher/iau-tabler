@@ -2,7 +2,7 @@ import React from "react";
 import Class from "./Class";
 import {Droppable} from "react-beautiful-dnd";
 import styled from "styled-components";
-import {Accordion} from "semantic-ui-react";
+import {Accordion, Icon} from "semantic-ui-react";
 
 const ClassesContainer = styled.div`
   transition: background-color 0.2s ease;
@@ -25,17 +25,18 @@ class Item extends React.Component {
     }
 
     render() {
+        const {isActive} = this.props;
         return (
             <Droppable droppableId={this.props.title}>
                 {(provided, snapshot) => {
                     return (
                         <ItemContainer ref={provided.innerRef} {...provided.droppableProps}
                                        isDraggingOver={snapshot.isDraggingOver}>
-                            <Accordion.Title onClick={this.props.onClick} active={this.props.isActive}>
-                                <i className="dropdown icon"/>
+                            <Accordion.Title onClick={this.props.onClick} active={isActive}>
+                                <Icon name={`${isActive ? "minus" : "plus"}`}/>
                                 {this.props.title}
                             </Accordion.Title>
-                            <Accordion.Content active={this.props.isActive}>
+                            <Accordion.Content active={isActive}>
                                 <ClassesContainer>
                                     {this.renderClasses()}
                                     {provided.placeholder}

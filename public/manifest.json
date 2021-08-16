@@ -2,11 +2,10 @@
   "name": "IAUTabler",
   "manifest_version": 2,
   "version": "0.0.1",
-  "description": "Creates tables from PeopleSoft's search section.",
+  "description": "Create tables from PeopleSoft's search section.",
   "permissions": [
     "tabs",
-    "activeTab",
-    "<all_urls>"
+    "activeTab"
   ],
   "content_scripts": [
     {
@@ -26,5 +25,10 @@
     ],
     "persistent": false
   },
-  "browser_action": {}
+  "browser_action": {},
+  "icons": {
+    "16": "icons/16.png",
+    "48": "icons/48.png",
+    "128": "icons/128.png"
+  }
 }

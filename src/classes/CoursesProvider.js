@@ -7,15 +7,17 @@ export class CoursesProvider {
         if (mockData) {
             callback(getMockCourses());
         } else {
-            this.grabCoursesFromDom(callback)
+            CoursesProvider.grabCoursesFromDom(callback)
         }
     }
 
     static grabCoursesFromDom = (callback) => {
-        window.chrome.runtime.onMessage.addListener((msg, sender, response) => {
+        window.chrome.runtime.onMessage.addListener(function proccessDom(msg) {
             if (msg.from === "background.js" && msg.to === "builder" && msg.subject === "append-dom") {
-                this.rawData = new DOMParser().parseFromString(msg.content, "text/html");
-                let courses = this.mapDomToCourses(this.rawData);
+                window.chrome.runtime.onMessage.removeListener(proccessDom);
+                const dom = new DOMParser().parseFromString(msg.content, "text/html");
+                let courses = CoursesProvider.mapDomToCourses(dom);
+                console.log(courses);
                 callback(courses);
             }
         });
@@ -26,9 +28,9 @@ export class CoursesProvider {
         let id = -1;
         return Array.from(coursesDom).map(courseDom => {
             const courseName = courseDom.querySelector("div[id*='divSSR_CLSRSLT_WRK_GROUPBOX2GP$']")
-                .innerText
-                .trim()
-                .replace("  ", " ");
+                                        .innerText
+                                        .trim()
+                                        .replace("  ", " ");
             const courseId = courseName.split(" - ")[0];
             let course = new Course(courseId, courseName, []);
             const classesDom = courseDom.querySelectorAll("[id^='trSSR_CLSRCH_MTG1$']");
