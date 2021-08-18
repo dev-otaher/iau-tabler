@@ -1,7 +1,7 @@
 export const getMockCourses = () => [
     {
         "id": "CIS 321",
-        "title": "CIS 321 - Database Concepts and Design",
+        "title": "CIS 321 - Databbbbbase Concepts and Design",
         "classes": [
             {
                 "courseId": "CIS 321",

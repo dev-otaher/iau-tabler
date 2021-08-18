@@ -4,8 +4,7 @@
   "version": "0.0.1",
   "description": "Create tables from PeopleSoft's search section.",
   "permissions": [
-    "tabs",
-    "activeTab"
+    "tabs"
   ],
   "content_scripts": [
     {

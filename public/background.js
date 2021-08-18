@@ -2,8 +2,16 @@ const sendDomMsg = {from: "background.js", to: "content.js", subject: "send-dom"
 const newTab = {url: `chrome-extension://${window.chrome.runtime.id}/index.html`, active: true};
 const appendDomMsg = {from: "background.js", to: "builder", subject: "append-dom"};
 
+const isValidTitle = (tabTitle) => {
+    return tabTitle === "Enrollment: Add Classes"
+        || tabTitle === "Class Search"
+        || tabTitle ===  "التسجيل: إضافة فصول"
+        || tabTitle === "بحث عن فصل";
+}
+
+
 window.chrome.browserAction.onClicked.addListener((tab) => {
-    if (tab.title === "Enrollment: Add Classes" || tab.title === "التسجيل: إضافة فصول") {
+    if (isValidTitle(tab.title)) {
         window.chrome.tabs.sendMessage(tab.id, sendDomMsg, (response) => {
             if (!response)
                 return;
