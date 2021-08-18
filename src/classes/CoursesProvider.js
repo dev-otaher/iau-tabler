@@ -17,7 +17,6 @@ export class CoursesProvider {
                 window.chrome.runtime.onMessage.removeListener(proccessDom);
                 const dom = new DOMParser().parseFromString(msg.content, "text/html");
                 let courses = CoursesProvider.mapDomToCourses(dom);
-                console.log(courses);
                 callback(courses);
             }
         });

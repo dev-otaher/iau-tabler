@@ -16,10 +16,8 @@ const ItemContainer = styled.div`
 `
 
 class Item extends React.Component {
-    itemCount = 0;
     renderClasses = () => {
         return this.props.classes.map((c, index) => {
-            this.itemCount += 1;
             return <Class id={c.id} key={index} data={c} inCourseContainer={this.props.inCourseContainer}/>
         })
     }

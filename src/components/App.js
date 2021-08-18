@@ -6,6 +6,7 @@ import TableList from "./TableList";
 import {CoursesProvider} from "../classes/CoursesProvider";
 import Group from "../classes/Group";
 import {ReactComponent as Logo} from "../icons/logo.svg";
+// import {ReactComponent as Logo2} from "../icons/logo2.svg";
 import InfoMenu from "./InfoMenu";
 
 class App extends React.Component {
@@ -14,8 +15,7 @@ class App extends React.Component {
     classes = [];
     groups = [new Group(1, "Group 1", [])];
 
-    constructor() {
-        super();
+    componentDidMount() {
         CoursesProvider.getCourses(false, courses => this.handleCourses(courses));
     }
 
@@ -36,7 +36,6 @@ class App extends React.Component {
     getCourseById = (id) => {
         return this.courses.filter(course => course.id === id)[0];
     }
-
     //endregion
 
     rerender() {

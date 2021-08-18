@@ -13,12 +13,12 @@ const Class = (props) => {
         return (props.inCourseContainer ?
             <>
                 <div className="center aligned column">{props.data["title"]}</div>
-                <div className="center aligned column">{props.data["daysAndTimes"].map(dt => <div>{dt}</div>)}</div>
+                <div className="center aligned column">{props.data["daysAndTimes"].map((dt, index) => <div key={index}>{dt}</div>)}</div>
             </> :
             <>
                 <div className="center aligned column">{props.data["courseTitle"]}</div>
                 <div className="center aligned column">{props.data["title"]}</div>
-                <div className="center aligned column">{props.data["daysAndTimes"].map(dt => <div>{dt}</div>)}</div>
+                <div className="center aligned column">{props.data["daysAndTimes"].map((dt, index) => <div key={index}>{dt}</div>)}</div>
             </>);
     }
     return (
