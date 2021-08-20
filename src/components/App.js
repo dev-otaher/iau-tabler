@@ -35,6 +35,7 @@ class App extends React.Component {
     getCourseById = (id) => {
         return this.courses.filter(course => course.id === id)[0];
     }
+
     //endregion
 
     rerender() {
