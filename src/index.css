@@ -6,3 +6,13 @@ body {
     background-attachment: fixed;
     background-size: cover;
 }
+
+
+.fc-v-event .fc-event-title {
+    overflow: inherit;
+}
+
+.fc-v-event .fc-event-main-frame {
+    overflow: auto;
+}
+

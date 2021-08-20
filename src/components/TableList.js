@@ -49,7 +49,7 @@ class TableList extends React.Component {
             title: title,
             daysOfWeek: [`${this.getDayIndex(day)}`],
             startTime: `${this.convertTo24(startTime)}:00`,
-            endTime: `${this.convertTo24(endTime)}:00`
+            endTime: `${this.convertTo24(endTime)}:00`,
         }
     }
 
@@ -60,8 +60,9 @@ class TableList extends React.Component {
                 c.daysAndTimes.forEach(dt => {
                     if (dt !== "TBA") {
                         const [days, start, , end] = dt.split(' ');
-                        days.match(/[A-Z][a-z]/g).forEach(day => {
-                            events.push(this.createEvent(c.courseTitle, day, start, end));
+                        days.match(/[A-Z][a-z]/g).forEach((day, index) => {
+                            let title = c.instructors.length > 0 ? `${c.courseTitle} (${c.instructors[index]})` : c.courseTitle;
+                            events.push(this.createEvent(title, day, start, end));
                         })
                     }
                 })

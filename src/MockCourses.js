@@ -1,7 +1,7 @@
 export const getMockCourses = () => [
     {
         "id": "CIS 321",
-        "title": "CIS 321 - Databbbbbase Concepts and Design",
+        "title": "CIS 321 - Database Concepts and Design",
         "classes": [
             {
                 "courseId": "CIS 321",
@@ -9,7 +9,9 @@ export const getMockCourses = () => [
                 "title": "6F1-LEC Regular",
                 "daysAndTimes": [
                     "We 8:00AM - 10:00AM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "CIS 321 - Database Concepts and Design"
             },
             {
                 "courseId": "CIS 321",
@@ -17,7 +19,9 @@ export const getMockCourses = () => [
                 "title": "6F2-LEC Regular",
                 "daysAndTimes": [
                     "Mo 8:00AM - 10:00AM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "CIS 321 - Database Concepts and Design"
             },
             {
                 "courseId": "CIS 321",
@@ -25,7 +29,9 @@ export const getMockCourses = () => [
                 "title": "6F3-LEC Regular",
                 "daysAndTimes": [
                     "Th 10:00AM - 12:00PM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "CIS 321 - Database Concepts and Design"
             },
             {
                 "courseId": "CIS 321",
@@ -33,7 +39,9 @@ export const getMockCourses = () => [
                 "title": "6F4-LEC Regular",
                 "daysAndTimes": [
                     "Mo 8:00AM - 10:00AM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "CIS 321 - Database Concepts and Design"
             },
             {
                 "courseId": "CIS 321",
@@ -41,7 +49,9 @@ export const getMockCourses = () => [
                 "title": "6F5-LEC Regular",
                 "daysAndTimes": [
                     "Mo 10:00AM - 12:00PM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "CIS 321 - Database Concepts and Design"
             },
             {
                 "courseId": "CIS 321",
@@ -49,7 +59,9 @@ export const getMockCourses = () => [
                 "title": "6F6-LEC Regular",
                 "daysAndTimes": [
                     "Tu 8:00AM - 10:00AM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "CIS 321 - Database Concepts and Design"
             },
             {
                 "courseId": "CIS 321",
@@ -57,7 +69,9 @@ export const getMockCourses = () => [
                 "title": "6F7-LEC Regular",
                 "daysAndTimes": [
                     "Tu 1:00PM - 3:00PM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "CIS 321 - Database Concepts and Design"
             },
             {
                 "courseId": "CIS 321",
@@ -65,7 +79,9 @@ export const getMockCourses = () => [
                 "title": "6F8-LEC Regular",
                 "daysAndTimes": [
                     "Th 10:00AM - 12:00PM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "CIS 321 - Database Concepts and Design"
             },
             {
                 "courseId": "CIS 321",
@@ -73,7 +89,9 @@ export const getMockCourses = () => [
                 "title": "6F9-LEC Regular",
                 "daysAndTimes": [
                     "Th 10:00AM - 12:00PM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "CIS 321 - Database Concepts and Design"
             },
             {
                 "courseId": "CIS 321",
@@ -81,7 +99,9 @@ export const getMockCourses = () => [
                 "title": "F01-LAB Regular",
                 "daysAndTimes": [
                     "Th 10:00AM - 12:00PM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "CIS 321 - Database Concepts and Design"
             },
             {
                 "courseId": "CIS 321",
@@ -89,7 +109,9 @@ export const getMockCourses = () => [
                 "title": "F02-LAB Regular",
                 "daysAndTimes": [
                     "Th 8:00AM - 10:00AM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "CIS 321 - Database Concepts and Design"
             },
             {
                 "courseId": "CIS 321",
@@ -97,7 +119,9 @@ export const getMockCourses = () => [
                 "title": "F03-LAB Regular",
                 "daysAndTimes": [
                     "Mo 10:00AM - 12:00PM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "CIS 321 - Database Concepts and Design"
             },
             {
                 "courseId": "CIS 321",
@@ -105,7 +129,9 @@ export const getMockCourses = () => [
                 "title": "F04-LAB Regular",
                 "daysAndTimes": [
                     "Su 10:00AM - 12:00PM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "CIS 321 - Database Concepts and Design"
             },
             {
                 "courseId": "CIS 321",
@@ -113,7 +139,9 @@ export const getMockCourses = () => [
                 "title": "F05-LAB Regular",
                 "daysAndTimes": [
                     "We 10:00AM - 12:00PM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "CIS 321 - Database Concepts and Design"
             },
             {
                 "courseId": "CIS 321",
@@ -121,7 +149,9 @@ export const getMockCourses = () => [
                 "title": "F06-LAB Regular",
                 "daysAndTimes": [
                     "We 8:00AM - 10:00AM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "CIS 321 - Database Concepts and Design"
             },
             {
                 "courseId": "CIS 321",
@@ -129,7 +159,9 @@ export const getMockCourses = () => [
                 "title": "F07-LAB Regular",
                 "daysAndTimes": [
                     "Su 1:00PM - 3:00PM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "CIS 321 - Database Concepts and Design"
             },
             {
                 "courseId": "CIS 321",
@@ -137,7 +169,9 @@ export const getMockCourses = () => [
                 "title": "F08-LAB Regular",
                 "daysAndTimes": [
                     "Su 8:00AM - 10:00AM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "CIS 321 - Database Concepts and Design"
             },
             {
                 "courseId": "CIS 321",
@@ -145,7 +179,9 @@ export const getMockCourses = () => [
                 "title": "F09-LAB Regular",
                 "daysAndTimes": [
                     "Th 1:00PM - 3:00PM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "CIS 321 - Database Concepts and Design"
             }
         ]
     },
@@ -159,7 +195,9 @@ export const getMockCourses = () => [
                 "title": "6F1-LEC Regular",
                 "daysAndTimes": [
                     "Th 8:00AM - 10:00AM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "CIS 325 - Network Protocols & E-Commerce"
             },
             {
                 "courseId": "CIS 325",
@@ -167,7 +205,9 @@ export const getMockCourses = () => [
                 "title": "6F2-LEC Regular",
                 "daysAndTimes": [
                     "Th 10:00AM - 12:00PM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "CIS 325 - Network Protocols & E-Commerce"
             },
             {
                 "courseId": "CIS 325",
@@ -175,7 +215,9 @@ export const getMockCourses = () => [
                 "title": "6F3-LEC Regular",
                 "daysAndTimes": [
                     "Tu 1:00PM - 3:00PM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "CIS 325 - Network Protocols & E-Commerce"
             },
             {
                 "courseId": "CIS 325",
@@ -183,7 +225,9 @@ export const getMockCourses = () => [
                 "title": "6F4-LEC Regular",
                 "daysAndTimes": [
                     "Tu 8:00AM - 10:00AM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "CIS 325 - Network Protocols & E-Commerce"
             },
             {
                 "courseId": "CIS 325",
@@ -191,7 +235,9 @@ export const getMockCourses = () => [
                 "title": "6F5-LEC Regular",
                 "daysAndTimes": [
                     "Tu 8:00AM - 10:00AM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "CIS 325 - Network Protocols & E-Commerce"
             },
             {
                 "courseId": "CIS 325",
@@ -199,7 +245,9 @@ export const getMockCourses = () => [
                 "title": "6F6-LEC Regular",
                 "daysAndTimes": [
                     "Su 10:00AM - 12:00PM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "CIS 325 - Network Protocols & E-Commerce"
             },
             {
                 "courseId": "CIS 325",
@@ -207,7 +255,9 @@ export const getMockCourses = () => [
                 "title": "6F7-LEC Regular",
                 "daysAndTimes": [
                     "We 10:00AM - 12:00PM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "CIS 325 - Network Protocols & E-Commerce"
             },
             {
                 "courseId": "CIS 325",
@@ -215,7 +265,9 @@ export const getMockCourses = () => [
                 "title": "6F8-LEC Regular",
                 "daysAndTimes": [
                     "Mo 8:00AM - 10:00AM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "CIS 325 - Network Protocols & E-Commerce"
             },
             {
                 "courseId": "CIS 325",
@@ -223,15 +275,19 @@ export const getMockCourses = () => [
                 "title": "6F9-LEC Regular",
                 "daysAndTimes": [
                     "We 8:00AM - 10:00AM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "CIS 325 - Network Protocols & E-Commerce"
             },
             {
                 "courseId": "CIS 325",
                 "id": 27,
                 "title": "F01-LAB Regular",
                 "daysAndTimes": [
-                    "Su 10:00AM - 7:00PM"
-                ]
+                    "Mo 10:00AM - 12:00PM"
+                ],
+                "instructors": [],
+                "courseTitle": "CIS 325 - Network Protocols & E-Commerce"
             },
             {
                 "courseId": "CIS 325",
@@ -239,7 +295,9 @@ export const getMockCourses = () => [
                 "title": "F02-LAB Regular",
                 "daysAndTimes": [
                     "Tu 1:00PM - 3:00PM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "CIS 325 - Network Protocols & E-Commerce"
             },
             {
                 "courseId": "CIS 325",
@@ -247,7 +305,9 @@ export const getMockCourses = () => [
                 "title": "F03-LAB Regular",
                 "daysAndTimes": [
                     "We 10:00AM - 12:00PM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "CIS 325 - Network Protocols & E-Commerce"
             },
             {
                 "courseId": "CIS 325",
@@ -255,7 +315,9 @@ export const getMockCourses = () => [
                 "title": "F04-LAB Regular",
                 "daysAndTimes": [
                     "We 8:00AM - 10:00AM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "CIS 325 - Network Protocols & E-Commerce"
             },
             {
                 "courseId": "CIS 325",
@@ -263,7 +325,9 @@ export const getMockCourses = () => [
                 "title": "F05-LAB Regular",
                 "daysAndTimes": [
                     "Th 8:00AM - 10:00AM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "CIS 325 - Network Protocols & E-Commerce"
             },
             {
                 "courseId": "CIS 325",
@@ -271,7 +335,9 @@ export const getMockCourses = () => [
                 "title": "F06-LAB Regular",
                 "daysAndTimes": [
                     "Mo 8:00AM - 10:00AM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "CIS 325 - Network Protocols & E-Commerce"
             },
             {
                 "courseId": "CIS 325",
@@ -279,7 +345,9 @@ export const getMockCourses = () => [
                 "title": "F07-LAB Regular",
                 "daysAndTimes": [
                     "We 10:00AM - 12:00PM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "CIS 325 - Network Protocols & E-Commerce"
             },
             {
                 "courseId": "CIS 325",
@@ -287,7 +355,9 @@ export const getMockCourses = () => [
                 "title": "F08-LAB Regular",
                 "daysAndTimes": [
                     "We 1:00PM - 3:00PM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "CIS 325 - Network Protocols & E-Commerce"
             },
             {
                 "courseId": "CIS 325",
@@ -295,7 +365,9 @@ export const getMockCourses = () => [
                 "title": "F09-LAB Regular",
                 "daysAndTimes": [
                     "Su 10:00AM - 12:00PM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "CIS 325 - Network Protocols & E-Commerce"
             }
         ]
     },
@@ -309,7 +381,9 @@ export const getMockCourses = () => [
                 "title": "6F4-LEC Regular",
                 "daysAndTimes": [
                     "Mo 10:00AM - 12:00PM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "CIS 413 - Professional Responsibility"
             },
             {
                 "courseId": "CIS 413",
@@ -317,7 +391,9 @@ export const getMockCourses = () => [
                 "title": "6F5-LEC Regular",
                 "daysAndTimes": [
                     "Mo 1:00PM - 3:00PM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "CIS 413 - Professional Responsibility"
             },
             {
                 "courseId": "CIS 413",
@@ -325,7 +401,9 @@ export const getMockCourses = () => [
                 "title": "6F6-LEC Regular",
                 "daysAndTimes": [
                     "Tu 1:00PM - 3:00PM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "CIS 413 - Professional Responsibility"
             },
             {
                 "courseId": "CIS 413",
@@ -333,7 +411,9 @@ export const getMockCourses = () => [
                 "title": "6F7-LEC Regular",
                 "daysAndTimes": [
                     "Su 8:00AM - 10:00AM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "CIS 413 - Professional Responsibility"
             },
             {
                 "courseId": "CIS 413",
@@ -341,7 +421,9 @@ export const getMockCourses = () => [
                 "title": "6F8-LEC Regular",
                 "daysAndTimes": [
                     "We 10:00AM - 12:00PM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "CIS 413 - Professional Responsibility"
             },
             {
                 "courseId": "CIS 413",
@@ -349,7 +431,9 @@ export const getMockCourses = () => [
                 "title": "6F9-LEC Regular",
                 "daysAndTimes": [
                     "Mo 10:00AM - 12:00PM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "CIS 413 - Professional Responsibility"
             }
         ]
     },
@@ -363,7 +447,9 @@ export const getMockCourses = () => [
                 "title": "6F1-LEC Regular",
                 "daysAndTimes": [
                     "Mo 8:00AM - 10:00AM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "CS 310 - Data Structure"
             },
             {
                 "courseId": "CS 310",
@@ -371,7 +457,9 @@ export const getMockCourses = () => [
                 "title": "6F2-LEC Regular",
                 "daysAndTimes": [
                     "Mo 10:00AM - 12:00PM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "CS 310 - Data Structure"
             },
             {
                 "courseId": "CS 310",
@@ -379,7 +467,9 @@ export const getMockCourses = () => [
                 "title": "6F3-LEC Regular",
                 "daysAndTimes": [
                     "Su 10:00AM - 12:00PM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "CS 310 - Data Structure"
             },
             {
                 "courseId": "CS 310",
@@ -387,7 +477,9 @@ export const getMockCourses = () => [
                 "title": "6F4-LEC Regular",
                 "daysAndTimes": [
                     "We 10:00AM - 12:00PM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "CS 310 - Data Structure"
             },
             {
                 "courseId": "CS 310",
@@ -395,7 +487,9 @@ export const getMockCourses = () => [
                 "title": "6F5-LEC Regular",
                 "daysAndTimes": [
                     "Su 8:00AM - 10:00AM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "CS 310 - Data Structure"
             },
             {
                 "courseId": "CS 310",
@@ -403,7 +497,9 @@ export const getMockCourses = () => [
                 "title": "6F7-LEC Regular",
                 "daysAndTimes": [
                     "Su 10:00AM - 12:00PM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "CS 310 - Data Structure"
             },
             {
                 "courseId": "CS 310",
@@ -411,7 +507,9 @@ export const getMockCourses = () => [
                 "title": "6F8-LEC Regular",
                 "daysAndTimes": [
                     "Mo 10:00AM - 12:00PM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "CS 310 - Data Structure"
             },
             {
                 "courseId": "CS 310",
@@ -419,7 +517,9 @@ export const getMockCourses = () => [
                 "title": "F01-LAB Regular",
                 "daysAndTimes": [
                     "Tu 9:00AM - 10:00AM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "CS 310 - Data Structure"
             },
             {
                 "courseId": "CS 310",
@@ -427,7 +527,9 @@ export const getMockCourses = () => [
                 "title": "F02-LAB Regular",
                 "daysAndTimes": [
                     "Tu 8:00AM - 9:00AM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "CS 310 - Data Structure"
             },
             {
                 "courseId": "CS 310",
@@ -435,7 +537,9 @@ export const getMockCourses = () => [
                 "title": "F03-LAB Regular",
                 "daysAndTimes": [
                     "We 9:00AM - 10:00AM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "CS 310 - Data Structure"
             },
             {
                 "courseId": "CS 310",
@@ -443,7 +547,9 @@ export const getMockCourses = () => [
                 "title": "F04-LAB Regular",
                 "daysAndTimes": [
                     "Su 1:00PM - 2:00PM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "CS 310 - Data Structure"
             },
             {
                 "courseId": "CS 310",
@@ -451,7 +557,9 @@ export const getMockCourses = () => [
                 "title": "F05-LAB Regular",
                 "daysAndTimes": [
                     "We 8:00AM - 9:00AM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "CS 310 - Data Structure"
             },
             {
                 "courseId": "CS 310",
@@ -459,7 +567,9 @@ export const getMockCourses = () => [
                 "title": "F07-LAB Regular",
                 "daysAndTimes": [
                     "Tu 8:00AM - 9:00AM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "CS 310 - Data Structure"
             },
             {
                 "courseId": "CS 310",
@@ -467,7 +577,9 @@ export const getMockCourses = () => [
                 "title": "F08-LAB Regular",
                 "daysAndTimes": [
                     "Tu 9:00AM - 10:00AM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "CS 310 - Data Structure"
             }
         ]
     },
@@ -480,8 +592,10 @@ export const getMockCourses = () => [
                 "id": 56,
                 "title": "6F1-LEC Regular",
                 "daysAndTimes": [
-                    "Su 9:00AM - 12:00PM"
-                ]
+                    "Su 10:00AM - 12:00PM"
+                ],
+                "instructors": [],
+                "courseTitle": "CS 321 - Object Oriented Programming (2)"
             },
             {
                 "courseId": "CS 321",
@@ -489,7 +603,9 @@ export const getMockCourses = () => [
                 "title": "6F4-LEC Regular",
                 "daysAndTimes": [
                     "Th 8:00AM - 10:00AM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "CS 321 - Object Oriented Programming (2)"
             },
             {
                 "courseId": "CS 321",
@@ -497,7 +613,9 @@ export const getMockCourses = () => [
                 "title": "6F7-LEC Regular",
                 "daysAndTimes": [
                     "We 1:00PM - 3:00PM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "CS 321 - Object Oriented Programming (2)"
             },
             {
                 "courseId": "CS 321",
@@ -505,7 +623,9 @@ export const getMockCourses = () => [
                 "title": "6F8-LEC Regular",
                 "daysAndTimes": [
                     "Su 10:00AM - 12:00PM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "CS 321 - Object Oriented Programming (2)"
             },
             {
                 "courseId": "CS 321",
@@ -513,7 +633,9 @@ export const getMockCourses = () => [
                 "title": "6F9-LEC Regular",
                 "daysAndTimes": [
                     "We 10:00AM - 12:00PM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "CS 321 - Object Oriented Programming (2)"
             },
             {
                 "courseId": "CS 321",
@@ -521,7 +643,9 @@ export const getMockCourses = () => [
                 "title": "F01-LAB Regular",
                 "daysAndTimes": [
                     "We 10:00AM - 12:00PM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "CS 321 - Object Oriented Programming (2)"
             },
             {
                 "courseId": "CS 321",
@@ -529,7 +653,9 @@ export const getMockCourses = () => [
                 "title": "F05-LAB Regular",
                 "daysAndTimes": [
                     "Su 10:00AM - 12:00PM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "CS 321 - Object Oriented Programming (2)"
             },
             {
                 "courseId": "CS 321",
@@ -537,7 +663,9 @@ export const getMockCourses = () => [
                 "title": "F07-LAB Regular",
                 "daysAndTimes": [
                     "Mo 8:00AM - 10:00AM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "CS 321 - Object Oriented Programming (2)"
             },
             {
                 "courseId": "CS 321",
@@ -545,7 +673,9 @@ export const getMockCourses = () => [
                 "title": "F08-LAB Regular",
                 "daysAndTimes": [
                     "Tu 1:00PM - 3:00PM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "CS 321 - Object Oriented Programming (2)"
             },
             {
                 "courseId": "CS 321",
@@ -553,7 +683,9 @@ export const getMockCourses = () => [
                 "title": "F09-LAB Regular",
                 "daysAndTimes": [
                     "Su 1:00PM - 3:00PM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "CS 321 - Object Oriented Programming (2)"
             }
         ]
     },
@@ -568,7 +700,9 @@ export const getMockCourses = () => [
                 "daysAndTimes": [
                     "Su 8:00AM - 10:00AM",
                     "Th 1:00PM - 2:00PM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "MGMT 290 - Business (1)"
             },
             {
                 "courseId": "MGMT 290",
@@ -577,7 +711,9 @@ export const getMockCourses = () => [
                 "daysAndTimes": [
                     "Su 10:00AM - 12:00PM",
                     "Tu 9:00AM - 10:00AM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "MGMT 290 - Business (1)"
             },
             {
                 "courseId": "MGMT 290",
@@ -586,7 +722,9 @@ export const getMockCourses = () => [
                 "daysAndTimes": [
                     "We 8:00AM - 9:00AM",
                     "Th 8:00AM - 10:00AM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "MGMT 290 - Business (1)"
             },
             {
                 "courseId": "MGMT 290",
@@ -595,7 +733,9 @@ export const getMockCourses = () => [
                 "daysAndTimes": [
                     "Tu 1:00PM - 2:00PM",
                     "Th 10:00AM - 12:00PM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "MGMT 290 - Business (1)"
             },
             {
                 "courseId": "MGMT 290",
@@ -604,7 +744,9 @@ export const getMockCourses = () => [
                 "daysAndTimes": [
                     "Tu 1:00PM - 2:00PM",
                     "We 9:00AM - 10:00AM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "MGMT 290 - Business (1)"
             },
             {
                 "courseId": "MGMT 290",
@@ -613,7 +755,9 @@ export const getMockCourses = () => [
                 "daysAndTimes": [
                     "We 10:00AM - 11:00AM",
                     "Th 10:00AM - 12:00PM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "MGMT 290 - Business (1)"
             },
             {
                 "courseId": "MGMT 290",
@@ -622,7 +766,9 @@ export const getMockCourses = () => [
                 "daysAndTimes": [
                     "Mo 10:00AM - 12:00PM",
                     "We 8:00AM - 9:00AM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "MGMT 290 - Business (1)"
             },
             {
                 "courseId": "MGMT 290",
@@ -631,7 +777,9 @@ export const getMockCourses = () => [
                 "daysAndTimes": [
                     "Tu 8:00AM - 9:00AM",
                     "Th 8:00AM - 10:00AM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "MGMT 290 - Business (1)"
             },
             {
                 "courseId": "MGMT 290",
@@ -640,7 +788,9 @@ export const getMockCourses = () => [
                 "daysAndTimes": [
                     "Mo 1:00PM - 2:00PM",
                     "Th 8:00AM - 10:00AM"
-                ]
+                ],
+                "instructors": [],
+                "courseTitle": "MGMT 290 - Business (1)"
             }
         ]
     }

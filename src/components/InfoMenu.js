@@ -21,9 +21,6 @@ class InfoMenu extends React.Component {
                                  rel="noreferrer">
                     <BMC/>
                 </StyledMenu.Item>
-                <StyledMenu.Item as="a" href="https://forms.office.com/r/jjMRrM3UXn" target="_blank" rel="noreferrer">
-                    <Icon name={"bug"} size={"big"} color={"red"}/>
-                </StyledMenu.Item>
             </StyledMenu>
         );
     }

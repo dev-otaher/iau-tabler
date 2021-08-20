@@ -5,7 +5,7 @@ import timeGridPlugin from "@fullcalendar/timegrid";
 
 const Calendar = (props) => {
     return (
-        <Segment size={"big"}>
+        <Segment>
             <h3>{props.title}</h3>
             <FullCalendar plugins={[timeGridPlugin]}
                           initialView="timeGridWeek"

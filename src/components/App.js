@@ -6,7 +6,6 @@ import TableList from "./TableList";
 import {CoursesProvider} from "../classes/CoursesProvider";
 import Group from "../classes/Group";
 import {ReactComponent as Logo} from "../icons/logo.svg";
-// import {ReactComponent as Logo2} from "../icons/logo2.svg";
 import InfoMenu from "./InfoMenu";
 
 class App extends React.Component {
@@ -16,7 +15,7 @@ class App extends React.Component {
     groups = [new Group(1, "Group 1", [])];
 
     componentDidMount() {
-        CoursesProvider.getCourses(false, courses => this.handleCourses(courses));
+        CoursesProvider.getCourses(true, courses => this.handleCourses(courses));
     }
 
     //region handleCourses

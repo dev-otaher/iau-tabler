@@ -3,11 +3,13 @@ export default class Class {
     id;
     title;
     daysAndTimes;
+    instructors
 
-    constructor(courseId, id, title, daysAndTimes) {
+    constructor(courseId, id, title, daysAndTimes, instructors) {
         this.courseId = courseId;
         this.id = id;
         this.title = title;
         this.daysAndTimes = daysAndTimes;
+        this.instructors = instructors;
     }
 }

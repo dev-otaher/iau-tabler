@@ -5,7 +5,7 @@ const appendDomMsg = {from: "background.js", to: "builder", subject: "append-dom
 const isValidTitle = (tabTitle) => {
     return tabTitle === "Enrollment: Add Classes"
         || tabTitle === "Class Search"
-        || tabTitle ===  "التسجيل: إضافة فصول"
+        || tabTitle === "التسجيل: إضافة فصول"
         || tabTitle === "بحث عن فصل";
 }
 

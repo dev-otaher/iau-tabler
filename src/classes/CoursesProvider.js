@@ -36,8 +36,10 @@ export class CoursesProvider {
             course.classes = Array.from(classesDom).map(classDom => {
                 const section = classDom.children[1].innerText.trim().replace(/[\n]/, " ");
                 const daysAndTimes = classDom.children[2].innerText.trim().split(/[\n]/);
+                let instructors = classDom.children[4].innerText.trim().split(/[\n]/);
+                instructors = instructors[0] === "" ? [] : instructors;
                 id += 1;
-                return new Class(courseId, id, section, daysAndTimes);
+                return new Class(courseId, id, section, daysAndTimes, instructors);
             })
             return course;
         });
