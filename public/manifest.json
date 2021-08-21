@@ -1,7 +1,7 @@
 {
   "name": "IAUTabler",
   "manifest_version": 2,
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Create tables from PeopleSoft's search section.",
   "permissions": [
     "tabs",

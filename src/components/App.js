@@ -15,7 +15,7 @@ class App extends React.Component {
     groups = [new Group(1, "Group 1", [])];
 
     componentDidMount() {
-        CoursesProvider.getCourses(true, courses => this.handleCourses(courses));
+        CoursesProvider.getCourses(false, courses => this.handleCourses(courses));
     }
 
     //region handleCourses
