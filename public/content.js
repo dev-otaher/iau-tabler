@@ -15,8 +15,7 @@ window.onload = ((e) => {
                     const dom = {content: frameBody.innerHTML};
                     response(dom);
                 } else {
-                    window.alert("Arabic is not supported yet :'D")
-                    response(null);
+                    response("arabic-version");
                 }
             }
         }
