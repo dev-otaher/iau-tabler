@@ -1,7 +1,14 @@
+@font-face {
+    font-family: "BahijTheSansArabic-Bold";
+    src: url("fonts/Bahij_TheSansArabic-Bold.eot?") format("eot"), url("fonts/Bahij_TheSansArabic-Bold.woff") format("woff"), url("fonts/Bahij_TheSansArabic-Bold.ttf") format("truetype"), url("fonts/Bahij_TheSansArabic-Bold.svg#BahijTheSansArabic-Bold") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
     margin: 0;
-    background: rgb(29,133,133);
-    background: linear-gradient(180deg, rgba(29,133,133,1) 0%, rgba(28,4,58,1) 100%);
+    background: rgb(29, 133, 133);
+    background: linear-gradient(180deg, rgba(29, 133, 133, 1) 0%, rgba(28, 4, 58, 1) 100%);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
